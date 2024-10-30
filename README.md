@@ -67,11 +67,3 @@ The client provides the following features:
 - Managing your connected services where you want to receive notifications
 
 
-## Scaling and Performance
-
-(Provide information on how the system can be scaled to handle increased load and maintain performance)
-
-## Contributing
-
-All Contributions are welcome ❤️
-
