@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 String               @id @default(cuid())
+  name               String?
+  publicKey          String               @unique
+  transactionHistory TransactionHistory[]
+  notifications      Notification[]
+  otp                OTP[]
+}
+
+model OTP {
+  id        String   @id @default(uuid())
+  userId    String
+  otpType   OTPType
+  otpID     String
+  otp       String   @unique
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model TransactionHistory {
+  id              String          @id @default(uuid())
+  userId          String
+  user            User            @relation(fields: [userId], references: [id])
+  transactionType TransactionType
+  signature       String
+  amount          Float
+  transactionData Json
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  Token           Token[]
+}
+
+model Notification {
+  id             String           @id @default(uuid())
+  userId         String
+  user           User             @relation(fields: [userId], references: [id])
+  notificationId String
+  channelId      String?
+  type           NotificationType
+  createdAt      DateTime         @default(now())
+  sent           Boolean          @default(false)
+}
+
+model Token {
+  id           String               @id @default(uuid())
+  symbol       String               
+  name         String
+  decimals     Float
+  transactions TransactionHistory[]
+}
+
+enum TransactionType {
+  ESCROW
+  SPL_TOKEN
+  NFT
+  AIRDROP
+  PAYMENT
+}
+
+enum NotificationType {
+  EMAIL
+  SMS
+  DISCORD
+  TELEGRAM
+}
+
+enum OTPType {
+  EMAIL
+  SMS
+}

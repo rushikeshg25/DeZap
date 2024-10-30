@@ -1,0 +1,29 @@
+{
+  "name": "notification-services",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "tsup --watch --onSuccess \"node dist/index.js\"",
+    "build": "tsup",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^5.19.0",
+    "@repo/db": "*",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "nodemailer": "^6.9.14",
+    "redis": "^4.7.0",
+    "telegraf": "^4.16.3",
+    "twilio": "^5.2.2"
+  },
+  "devDependencies": {
+    "tsup": "^8.2.4"
+  }
+}
