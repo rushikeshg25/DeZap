@@ -1,5 +1,7 @@
 # DeZap
 
+![demo](demo.mp4)
+
 ## System Overview
 ![alt text](DeZap-Arch.png)
 
