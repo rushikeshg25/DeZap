@@ -1,6 +1,9 @@
 # DeZap
 
-![demo](demo.mp4)
+
+https://github.com/user-attachments/assets/8994ae43-8472-4b53-a708-4944e6ef3aed
+
+
 
 ## System Overview
 ![alt text](DeZap-Arch.png)
